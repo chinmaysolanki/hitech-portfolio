@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { profile } from '@/lib/data';
 
 const links = [
+  { href: '#services', label: 'Services' },
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
@@ -32,16 +33,18 @@ export default function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-white/10 bg-background/70 backdrop-blur-md'
+          ? 'border-b border-cyan/15 bg-background/80 backdrop-blur-md'
           : 'border-b border-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-accent to-accent-2 text-sm font-bold text-white">
+          <span className="clip-corner grid h-9 w-9 place-items-center bg-gradient-to-br from-cyan to-magenta text-sm font-black text-[#05060d]">
             {initials}
           </span>
-          <span className="hidden sm:inline">{profile.name}</span>
+          <span className="hidden font-mono text-sm uppercase tracking-widest sm:inline">
+            {profile.name}
+          </span>
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -49,7 +52,7 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+              className="font-mono text-xs uppercase tracking-widest text-foreground/60 transition-colors hover:text-cyan"
             >
               {l.label}
             </a>
@@ -57,7 +60,7 @@ export default function Nav() {
           {profile.resumeUrl && (
             <a
               href={profile.resumeUrl}
-              className="rounded-full border border-white/15 px-4 py-1.5 text-sm transition-colors hover:border-accent hover:text-accent"
+              className="clip-corner border border-cyan/40 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-cyan transition-colors hover:bg-cyan/10"
             >
               Resume
             </a>
@@ -76,14 +79,14 @@ export default function Nav() {
       </nav>
 
       {open && (
-        <div className="border-t border-white/10 bg-background/95 px-6 py-4 md:hidden">
+        <div className="border-t border-cyan/15 bg-background/95 px-6 py-4 md:hidden">
           <div className="flex flex-col gap-4">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-foreground/80 hover:text-foreground"
+                className="font-mono text-sm uppercase tracking-widest text-foreground/80 hover:text-cyan"
               >
                 {l.label}
               </a>

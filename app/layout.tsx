@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { profile } from '@/lib/data';
+import CyberBackground from '@/components/CyberBackground';
 
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.role}`,
@@ -23,8 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="aurora" aria-hidden="true" />
+        <div className="cyber-vignette" aria-hidden="true" />
+        <div className="cyber-grid" aria-hidden="true" />
+        <CyberBackground />
         {children}
+        <div className="scanlines" aria-hidden="true" />
       </body>
     </html>
   );
